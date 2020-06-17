@@ -17,7 +17,7 @@ type RedisCluster struct {
 func NewRedisClusterBackend(cfg config.RedisCluster) *RedisCluster {
 
 	options := &redis.ClusterOptions{
-		Addrs:     cfg.Hosts,
+		Addrs: cfg.Hosts,
 		//Password: cfg.ClusterPassword
 	}
 
@@ -25,7 +25,6 @@ func NewRedisClusterBackend(cfg config.RedisCluster) *RedisCluster {
 
 	var ctx = context.Background()
 	_, err := client.Ping(ctx).Result()
-
 
 	if err != nil {
 		log.Fatalf("Error creating RedisCluster backend: %v", err)
@@ -40,7 +39,7 @@ func NewRedisClusterBackend(cfg config.RedisCluster) *RedisCluster {
 }
 
 func (redis *RedisCluster) Get(ctx context.Context, key string) (string, error) {
-	res, err := redis.client.Get(ctx,key).Result()
+	res, err := redis.client.Get(ctx, key).Result()
 
 	if err != nil {
 		return "", err
