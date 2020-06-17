@@ -11,6 +11,7 @@ type Backend struct {
 	Cassandra Cassandra   `mapstructure:"cassandra"`
 	Memcache  Memcache    `mapstructure:"memcache"`
 	Redis     Redis       `mapstructure:"redis"`
+	RedisCluster RedisCluster `mapstructure:"redis_cluster"`
 }
 
 func (cfg *Backend) validateAndLog() {
@@ -27,6 +28,8 @@ func (cfg *Backend) validateAndLog() {
 		cfg.Memcache.validateAndLog()
 	case BackendRedis:
 		cfg.Redis.validateAndLog()
+	case BackendRedisCluster:
+		cfg.RedisCluster.validateAndLog()
 	case BackendMemory:
 	default:
 		log.Fatalf(`invalid config.backend.type: %s. It must be "aerospike", "azure", "cassandra", "memcache", "redis", or "memory".`, cfg.Type)
@@ -42,6 +45,7 @@ const (
 	BackendMemcache  BackendType = "memcache"
 	BackendMemory    BackendType = "memory"
 	BackendRedis     BackendType = "redis"
+	BackendRedisCluster BackendType = "redis_cluster"
 )
 
 type Aerospike struct {
@@ -107,4 +111,13 @@ func (cfg *Redis) validateAndLog() {
 	log.Infof("config.backend.redis.expiration: %d", cfg.Expiration)
 	log.Infof("config.backend.redis.tls.enabled: %t", cfg.TLS.Enabled)
 	log.Infof("config.backend.redis.tls.insecure_skip_verify: %t", cfg.TLS.InsecureSkipVerify)
+}
+
+type RedisCluster struct {
+	Hosts []string `mapstructure:"hosts"`
+	Expiration int      `mapstructure:"expiration"`
+}
+
+func (cfg *RedisCluster) validateAndLog() {
+	log.Infof("config.backend.redis_cluster.hosts: %v", cfg.Hosts)
 }

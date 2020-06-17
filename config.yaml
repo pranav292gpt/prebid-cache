@@ -3,7 +3,7 @@ admin_port: 2525
 log:
   level: "info"
 rate_limiter:
-  enabled: true
+  enabled: false
   num_requests: 100
 request_limits:
   allow_setting_keys: false
@@ -11,7 +11,7 @@ request_limits:
   max_num_values: 10
   max_ttl_seconds: 3600
 backend:
-  type: "memory" # Can also be "aerospike", "azure", "cassandra", "memcache" or "redis"
+  type: "redis_cluster" # Can also be "aerospike", "azure", "cassandra", "memcache", "redis" or "redis_cluster"
   aerospike:
     host: "aerospike.prebid.com"
     port: 3000
@@ -33,6 +33,9 @@ backend:
     tls:
       enabled: false
       insecure_skip_verify: false
+  redis_cluster:
+    hosts: ["127.0.0.1:7000","127.0.0.1:7001","127.0.0.1:7002","127.0.0.1:7003","127.0.0.1:7004","127.0.0.1:7005"]
+
 compression:
   type: "snappy" # Can also be "none"
 metrics:

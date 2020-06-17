@@ -8,6 +8,7 @@ require (
 	github.com/didip/tollbooth v2.2.0+incompatible
 	github.com/fsnotify/fsnotify v1.4.7
 	github.com/go-redis/redis v6.12.1-0.20180718122851-ee41b9092371+incompatible
+	github.com/go-redis/redis/v8 v8.0.0-beta.5
 	github.com/gocql/gocql v0.0.0-20180617115710-e06f8c1bcd78
 	github.com/gofrs/uuid v3.2.0+incompatible
 	github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db
@@ -35,10 +36,10 @@ require (
 	github.com/valyala/fasthttp v0.0.0-20160617101304-d42167fd04f6
 	github.com/vrischmann/go-metrics-influxdb v0.0.0-20160917065939-43af8332c303
 	github.com/yuin/gopher-lua v0.0.0-20180630135845-46796da1b0b4
-	golang.org/x/net v0.0.0-20190613194153-d28f0bde5980
+	golang.org/x/net v0.0.0-20190923162816-aa69164e4478
 	golang.org/x/sys v0.0.0-20200122134326-e047566fdf82
-	golang.org/x/text v0.3.0
+	golang.org/x/text v0.3.2
 	golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2
 	gopkg.in/inf.v0 v0.9.1
-	gopkg.in/yaml.v2 v2.2.5
+	gopkg.in/yaml.v2 v2.2.7
 )

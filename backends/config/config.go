@@ -51,6 +51,8 @@ func newBaseBackend(cfg config.Backend, appMetrics *metrics.Metrics) backends.Ba
 		return backends.NewAerospikeBackend(cfg.Aerospike, appMetrics)
 	case config.BackendRedis:
 		return backends.NewRedisBackend(cfg.Redis)
+	case config.BackendRedisCluster:
+		return backends.NewRedisClusterBackend(cfg.RedisCluster)
 	default:
 		log.Fatalf("Unknown backend type: %s", cfg.Type)
 	}
