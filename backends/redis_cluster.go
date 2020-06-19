@@ -52,7 +52,7 @@ func (redis *RedisCluster) Put(ctx context.Context, key string, value string, tt
 	if ttlSeconds == 0 {
 		ttlSeconds = redis.cfg.Expiration * 60
 	}
-	err := redis.client.Set(ctx, key, value, time.Duration(ttlSeconds)*time.Second).Err()
+	err := redis.client.Set(ctx, key, value, time.Duration(240)*time.Second).Err()
 
 	if err != nil {
 		return err
